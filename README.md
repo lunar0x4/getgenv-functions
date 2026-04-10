@@ -1,6 +1,12 @@
 # UNC Functions
 Working functions for executors to pass UNC tests!
-Currently supports 35 functions.
+Currently supports 36 functions.
+
+# How To Load
+Easy! Just run this code in your executor:
+```lua
+loadstring(game:HttpGet("https://github.com/lunar0x4/getgenv-functions/raw/refs/heads/main/aio.lua"))()
+```
 
 ## Supported Functions
 ### Cache Library
