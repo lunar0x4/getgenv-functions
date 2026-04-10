@@ -51,6 +51,8 @@ loadstring(game:HttpGet("https://github.com/lunar0x4/getgenv-functions/raw/refs/
 - compareinstances
 - filtergc
 - getgc
+- gethiddenproperty
+- sethiddenproperty
 - getrunningscripts
 - hookfunction
 - hookmetamethod
