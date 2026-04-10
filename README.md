@@ -2,6 +2,8 @@
 Working functions for executors to pass UNC tests!
 Currently supports 36 functions.
 
+We are also on [ScriptBlox](https://scriptblox.com/script/Universal-Script-Working-Functions-For-Executors-200587)!
+
 # How To Load
 Easy! Just run this code in your executor:
 ```lua
