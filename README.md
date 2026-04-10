@@ -1,7 +1,7 @@
 # UNC Functions
 Working functions for executors to pass UNC tests!
 
-Currently supports 28 functions!
+Currently supports ~~28~~ 34 functions!
 
 ## Supported Functions
 ### Cache Library
@@ -19,7 +19,12 @@ Currently supports 28 functions!
 - crypt.hash
 
 ### Debug Library
-to add
+- debug.getconstant
+- debug.getconstants
+- debug.getinfo
+- debug.getstack
+- debug.getproto
+- debug.getprotos
 
 ### Filesystem
 - writefile
