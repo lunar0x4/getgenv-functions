@@ -59,3 +59,7 @@ loadstring(game:HttpGet("https://github.com/lunar0x4/getgenv-functions/raw/refs/
 - isrbxactive
 - isreadonly
 - checkcaller
+- newcclosure
+- iscclosure
+- islclosure
+- isexecutorclosure
