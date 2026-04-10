@@ -1,5 +1,6 @@
 -- came from sirhurt's discord server
 assert(newcclosure, "missing newcclosure")
+assert(iscclosure, "missing iscclosure")
 assert(debug.getconstants, "missing debug.getconstants")
 assert(debug.info, "missing debug.info")
 assert(debug.traceback, "missing debug.traceback")
