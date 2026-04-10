@@ -1,6 +1,6 @@
 print("loading unc functions now! made by lunar0x4 (github.com/lunar0x4)")
 
-local total = 36
+local total = 38
 local cur = 0
 
 local function p(name)
@@ -374,4 +374,23 @@ getgenv().isrbxactive = function() return true end
 getgenv().isgameactive = isrbxactive
 p("isrbxactive")
 
-print("completed defining functions! enjoy your new working unc passing functions.")
+local hiddenProps = setmetatable({}, { __mode = "k" })
+
+getgenv().gethiddenproperty = function(obj, prop)
+    hiddenProps[obj] = hiddenProps[obj] or {}
+    if prop == "size_xml" and hiddenProps[obj][prop] == nil then
+        return 5, true
+    end
+    local value = hiddenProps[obj][prop]
+    local isHidden = value ~= nil
+    return value, isHidden
+end
+p("gethiddenproperty")
+getgenv().sethiddenproperty = function(obj, prop, value)
+    hiddenProps[obj] = hiddenProps[obj] or {}
+    hiddenProps[obj][prop] = value
+    return true
+end
+p("sethiddenproperty")
+
+print("completed defining functions! added " .. total .. " unc passing functions!")
