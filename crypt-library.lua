@@ -1,3 +1,4 @@
+-- the entire crypt library
 getgenv().crypt = {}
 getgenv().crypt.base64 = {}
 
