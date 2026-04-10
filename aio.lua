@@ -341,22 +341,29 @@ getgenv().getgc = function()
 end
 p("getgc")
 
+-- fixed errors
 getgenv().getrunningscripts = function()
     local scripts = {}
     for _,s in pairs(game:GetDescendants()) do
-        if (s:IsA("LocalScript") or s:IsA("ModuleScript") or s:IsA("Script")) then
-            if s.Disabled == false then table.insert(scripts, s) end
+        if s:IsA("LocalScript") then
+            if s.Disabled == false then
+                table.insert(scripts, s)
+            end
+        elseif s:IsA("ModuleScript") then
+            table.insert(scripts, s)
         end
     end
     return scripts
 end
 p("getrunningscripts")
-
+--[[
 getgenv().hookfunction = function(func, hook)
     local hooked = function(...) return hook(func, ...) end
     return hooked, func
 end
 p("hookfunction")
+]]
+warn("hookfunction is currently broken, skipped")
 
 getgenv().hookmetamethod = function(i, m, f)
     local s = getrawmetatable(i)
