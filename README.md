@@ -1,7 +1,6 @@
 # UNC Functions
 Working functions for executors to pass UNC tests!
-
-Currently supports 35 functions!
+Currently supports 35 functions.
 
 ## Supported Functions
 ### Cache Library
