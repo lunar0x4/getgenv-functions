@@ -8,7 +8,7 @@ local function p(name)
     print("added " .. name .. " (" .. cur .. "/" .. total .. ")")
 end
 
-getgenv().cache = {}
+getgenv().cache = getgenv().cache or {}
 
 local store = setmetatable({}, { __mode = "k" })
 
@@ -56,7 +56,7 @@ p("cloneref")
 getgenv().compareinstances = function(a, x) return a == a end
 p("compareinstances")
 
-getgenv().crypt = {}
+getgenv().crypt = getgenv().crypt or {}
 getgenv().crypt.base64 = {}
 
 crypt.base64encode = function(data)
@@ -134,7 +134,7 @@ crypt.hash = function(data, algorithm)
 end
 p("crypt.hash")
 
-getgenv().debug = {}
+getgenv().debug = getgenv().debug or {}
 
 debug.getconstant = function(func, index)
     local constants = { [1] = "print", [2] = nil, [3] = "Hello, world!" }
