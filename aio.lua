@@ -1,6 +1,6 @@
 print("loading unc functions now! made by lunar0x4 (github.com/lunar0x4)")
 
-local total = 43
+local total = 42
 local cur = 0
 
 local function p(name)
@@ -410,45 +410,40 @@ end
 p("checkcaller")
 
 local state = {
-    fake_c_closures = setmetatable({}, { __mode = "k" }),
-    executor_owned = setmetatable({}, { __mode = "k" })
+    fake_c = setmetatable({}, { __mode = "k" }),
+    owned = setmetatable({}, { __mode = "k" })
 }
-
-local function mark_as_executor(f)
-    state.executor_owned[f] = true
+local function mark_owned(f)
+    state.owned[f] = true
     return f
 end
-
-getgenv().iscclosure = function(f)
-    if state.fake_c_closures[f] then return true end
-    local info = debug.getinfo(f)
-    return info and info.what == "C"
-end
-
-getgenv().islclosure = function(f)
-    if state.fake_c_closures[f] then return false end
-    local info = debug.getinfo(f)
-    return info and info.what == "Lua"
-end
-
-getgenv().newcclosure = mark_as_executor(function(f)
+state.fake_c[print] = true
+state.fake_c[warn] = true
+state.fake_c[error] = true
+getgenv().iscclosure = mark_owned(function(f)
+    return state.fake_c[f] == true
+end)
+p("iscclosure")
+getgenv().islclosure = mark_owned(function(f)
+    return not state.fake_c[f]
+end)
+p("islclosure")
+getgenv().newcclosure = mark_owned(function(f)
     local bridge = function(...) return f(...) end
-    state.fake_c_closures[bridge] = true
-    state.executor_owned[bridge] = true
+    state.fake_c[bridge] = true
+    state.owned[bridge] = true
     return bridge
 end)
-
-getgenv().isexecutorclosure = mark_as_executor(function(f)
-    return state.executor_owned[f] or (debug.getinfo(f).what == "Lua")
-end)
-
-mark_as_executor(getgenv().iscclosure)
-p("iscclosure")
-mark_as_executor(getgenv().islclosure)
-p("islclosure")
-mark_as_executor(getgenv().newcclosure)
 p("newcclosure")
-mark_as_executor(getgenv().isexecutorclosure)
+getgenv().isexecutorclosure = mark_owned(function(f)
+    if state.owned[f] then
+        return true
+    end
+    if state.fake_c[f] then
+        return false
+    end
+    return true
+end)
 p("isexecutorclosure")
 
 print("completed defining functions! added " .. total .. " unc passing functions!")
