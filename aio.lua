@@ -356,14 +356,18 @@ getgenv().getrunningscripts = function()
     return scripts
 end
 p("getrunningscripts")
---[[
+
 getgenv().hookfunction = function(func, hook)
-    local hooked = function(...) return hook(func, ...) end
-    return hooked, func
+    if replaceclosure then
+        return replaceclosure(func, hook)
+    end
+    local old = func
+    local hooked = function(...)
+        return hook(old, ...)
+    end
+    return hooked, old
 end
 p("hookfunction")
-]]
-warn("hookfunction is currently broken, skipped")
 
 getgenv().hookmetamethod = function(i, m, f)
     local s = getrawmetatable(i)
