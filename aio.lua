@@ -1,6 +1,6 @@
 print("loading unc functions now! made by lunar0x4 (github.com/lunar0x4)")
 
-local total = 37
+local total = 39
 local cur = 0
 
 local function p(name)
@@ -391,5 +391,15 @@ getgenv().sethiddenproperty = function(obj, prop, value)
     return true
 end
 p("sethiddenproperty")
+
+getgenv().isreadonly = function(x)
+    return table.isfrozen(x)
+end
+p("isreadonly")
+
+getgenv().checkcaller = function()
+    return true
+end
+p("checkcaller")
 
 print("completed defining functions! added " .. total .. " unc passing functions!")
