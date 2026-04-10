@@ -1,7 +1,7 @@
 # UNC Functions
 Working functions for executors to pass UNC tests!
 
-Currently supports ~~28~~ 34 functions!
+Currently supports 35 functions!
 
 ## Supported Functions
 ### Cache Library
@@ -44,6 +44,7 @@ Currently supports ~~28~~ 34 functions!
 - compareinstances
 - filtergc
 - getgc
+- getrunningscripts
 - hookfunction
 - hookmetamethod
 - isrbxactive
