@@ -1,6 +1,6 @@
 print("loading unc functions now! made by lunar0x4 (github.com/lunar0x4)")
 
-local total = 38
+local total = 37
 local cur = 0
 
 local function p(name)
@@ -9,7 +9,6 @@ local function p(name)
 end
 
 getgenv().cache = {}
-p("cache")
 
 local store = setmetatable({}, { __mode = "k" })
 
